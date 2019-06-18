@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="slack_send_message" name="Slack Send Message" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>
+        This handler posts a message in a specific slack channel.
+    </description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+        <parameter id="channel" label="Channel" required="true"
+            tooltip="Channel for a specific team where you are posting to." />
+        <parameter id="text" label="Message Text" required="true"
+            tooltip="Text you want to send in a message." />
+        <parameter id="thread_ts" label="Thread Id" required="false"
+            tooltip="If desired, the id of a Slack thread to send the message as a reply to the thread." />
+    </parameters>
+    <handler name="slack_send_message" version="1">
+        <infos>
+          <info name="token">&lt;%= @info['token'] %&gt;</info>
+        </infos>
+        <parameters>
+          <parameter name="channel">&lt;%= @parameters['channel'] %&gt;</parameter>
+          <parameter name="text">&lt;%= @parameters['text'] %&gt;</parameter>
+          <parameter name="thread_ts">&lt;%= @parameters['thread_ts'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results>
+        <result name="Thread Id" />
+    </results>
+</taskDefinition>

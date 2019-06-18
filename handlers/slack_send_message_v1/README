@@ -1,0 +1,34 @@
+== Slack Send Message
+This handler posts a message in a specific slack channel.
+
+=== Parameters
+[Channel]
+  Channel for a specific team where you are posting to.
+[Text]
+  Text you want to send in a message.
+[Thread Id]
+  If desired, the id of a Slack thread to send the message as a reply to the thread
+
+=== Results
+[Thread Id]
+  The id for the thread of the currently created message.
+
+=== Detailed Description
+This handler posts a message in a specific slack channel.  This handler is also capable
+of responding to a message within a specific channel via thread, if the user desires, and possess
+the message's respective thread id. In order to use this handler, you must first create
+a Slack application and an API Token (information on how to do this is below).
+
+=== Creating a Slack API Token
+1) Go to https://api.slack.com
+2) Create a New App
+    - Give it a Descriptive name (ie. Kinetic Task Handler)
+    - Register the 'Development Slack Team' as the Team you wish to post to
+3) Add the 'send message as user' permission under 'Add features and 
+    functionality' > 'Permissions'
+    - Can also create/give permission to 'send message as bot' if you would
+        prefer messages be sent under a separate username
+4) Under 'Install your app to your team', click 'Install App' and authorize it
+5) Under 'Settings' > 'Install App' (in the navigation bar on the left side of 
+    the page), copy the OAuth Access Token from the page and use it for the 
+    Handler's token info value
