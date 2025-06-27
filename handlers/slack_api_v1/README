@@ -1,0 +1,33 @@
+== Slack API
+Generic Rest API Interface for Slack
+
+=== Parameters
+[Error Handling]
+    Determine what to return if an error is encountered.
+[Method]
+  GET,POST,PATCH,DELETE,etc.
+[Path]
+  The relative API path (to the 'api_location' info value) that will be called.
+  This value should begin with a forward slash '/', and include any URL parameters.
+[Body]
+  If required, a JSON representation of data passed along with the action.
+
+=== Sample Configuration
+Error Handling:               Error Message
+Method:                       GET
+Path:                         /conversations.list?types=public_channel&exclude_archive=true
+Body:
+
+=== Results
+[Handler Error Message]
+    Error message if an error was encountered and Error Handling is set to "Error Message".
+[Response Code]
+    The HTTP response code
+[Response Body]
+    The returned value from the Rest Call (JSON format)
+
+=== Detailed Description
+This handler provides a flexible way to execute any Slack REST API method.
+The usefulness of the responses depends on the permissions granted to the associated Slack app. To ensure successful and meaningful API calls, the Slack app must be properly registered and configured with the appropriate scopes.
+
+For more information, see the Slack API documentation (https://api.slack.com/web).
