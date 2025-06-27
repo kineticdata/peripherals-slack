@@ -44,7 +44,7 @@ class SlackApiV1
     begin
       response = RestClient::Request.execute(
               method: @method,
-              url: "#{@api_location}/#{@path}",
+              url: "#{@api_location}#{@path}",
               payload: @body.to_json,
               headers: {
                 :authorization => "Bearer #{@oauth_token}",
