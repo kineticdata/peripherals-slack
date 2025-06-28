@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskInfo version="1.0">
+  <info name="api_location" description="Location of the Slack API">https://slack.com/api</info>
+  <info name="oauth_token" type="encrypted" description="Bot User OAuth Token"></info>
+  <info name="enable_debug_logging" description="Enable debug logging if the value is set to 'Yes'.">No</info>
+</taskInfo>

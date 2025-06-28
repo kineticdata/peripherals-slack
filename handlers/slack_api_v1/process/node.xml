@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taskDefinition id="slack_api" name="Slack API" schema_version="1.0" version="1">
+    <author>support@kineticdata.com</author>
+    <description>
+        Generically make Slack API calls.
+    </description>
+    <helpurl></helpurl>
+    <visible>true</visible>
+    <deferrable>false</deferrable>
+    <parameters>
+      <parameter id="error_handling" label="Error Handling" required="true"
+        tooltip="Determine what to return if an error is encountered." menu="Error Message,Raise Error">Error Message</parameter>
+      <parameter id="method" label="Method" required="true"
+        tooltip="GET,POST,PATCH,DELETE,etc."/>
+      <parameter id="path" label="Path" required="true"
+        tooltip="The relative API path (to the 'api_location' info value) that will be called. This value should begin with a forward slash '/', and include any URL parameters."/>
+      <parameter id="body" label="Body" required="false"
+        tooltip="If required, a JSON representation of data passed along with the action."/>
+    </parameters>
+    <handler name="slack_api" version="1">
+        <infos>
+            <info name="api_location">&lt;%= @info['api_location'] %&gt;</info>
+            <info name="oauth_token">&lt;%= @info['oauth_token'] %&gt;</info>
+            <info name="enable_debug_logging">&lt;%= @info['enable_debug_logging'] %&gt;</info>
+        </infos>
+        <parameters>
+          <parameter name="error_handling">&lt;%= @parameters.has_key?("error_handling") ?
+          @parameters["error_handling"] : "Raise Error" %&gt;</parameter>
+          <parameter name="method">&lt;%= @parameters["method"] %&gt;</parameter>
+          <parameter name="path">&lt;%= @parameters['path'] %&gt;</parameter>
+          <parameter name="body">&lt;%= @parameters['body'] %&gt;</parameter>
+        </parameters>
+    </handler>
+    <results format="xml">
+      <result name="Handler Error Message"/>
+      <result name="Response Code"/>
+      <result name="Response Body"/>
+    </results>
+</taskDefinition>
